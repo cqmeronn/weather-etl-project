@@ -1,20 +1,29 @@
+
 __pycache__/
-*.py[cod]
-*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+
+
+.venv/
+env/
+venv/
+
 
 .env
 
-.ipynb_checkpoints
+
+**/.ipynb_checkpoints/
+
+
+data
+data/raw/*
+data/processed/*
+
+
+visuals
+visuals/*
+
 
 .DS_Store
-
-*.log
-data/
-
-.venv
-venv/
-.env/
-.envrc
-
-visuals/
-*.html
+Thumbs.db
