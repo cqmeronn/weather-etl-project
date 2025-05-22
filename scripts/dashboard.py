@@ -1,22 +1,11 @@
-import os
 import pandas as pd
 import altair as alt
+import os
 
-PROCESSED_DIR = "data/processed"
+COMBINED_FILE = "data/processed/weather_data.csv"
 
-all_data = []
-
-for filename in os.listdir(PROCESSED_DIR):
-    if filename.endswith(".csv"):
-        df = pd.read_csv(os.path.join(PROCESSED_DIR, filename))
-        df["timestamp"] = pd.to_datetime(df["timestamp"], unit='s', errors='coerce')
-        all_data.append(df)
-
-if not all_data:
-    raise ValueError("No processed data found.")
-
-data = pd.concat(all_data)
-
+data = pd.read_csv(COMBINED_FILE)
+data["timestamp"] = pd.to_datetime(data["timestamp"], unit='s', errors='coerce')
 data = data.sort_values("timestamp")
 
 temp_chart = alt.Chart(data).mark_line().encode(
@@ -37,9 +26,7 @@ humidity_chart = alt.Chart(data).mark_line(color='green').encode(
 
 final_chart = alt.vconcat(temp_chart, humidity_chart)
 
-
 os.makedirs("visuals", exist_ok=True)
-
 final_chart.save("visuals/weather_dashboard.html")
 
 print("✅ Dashboard saved to visuals/weather_dashboard.html")
