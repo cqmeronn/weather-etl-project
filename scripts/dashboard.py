@@ -1,32 +1,37 @@
 import pandas as pd
-import altair as alt
-import os
+import plotly.graph_objects as go
+import plotly.express as px
+import plotly.io as pio
 
-COMBINED_FILE = "data/processed/weather_data.csv"
+pio.renderers.default = "browser"
 
-data = pd.read_csv(COMBINED_FILE)
-data["timestamp"] = pd.to_datetime(data["timestamp"], unit='s', errors='coerce')
-data = data.sort_values("timestamp")
+df = pd.read_csv('data/processed/weather_data.csv')
 
-temp_chart = alt.Chart(data).mark_line().encode(
-    x='timestamp:T',
-    y='temperature:Q',
-    tooltip=["timestamp", "temperature"]
-).properties(
-    title="Temperature in London Over Time"
+df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s')
+
+df = df[df['city'] == 'London']
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(x=df['timestamp'], y=df['temperature'],
+                         mode='lines+markers',
+                         name='Temperature',
+                         line=dict(color='royalblue')))
+
+fig.add_trace(go.Scatter(x=df['timestamp'], y=df['humidity'],
+                         mode='lines+markers',
+                         name='Humidity',
+                         line=dict(color='green')))
+
+fig.update_traces(hovertemplate='Time: %{x}<br>Value: %{y}<br>Condition: %{text}',
+                  text=df['weather'])
+
+fig.update_layout(
+    title='Weather Trends in London',
+    xaxis_title='Time',
+    yaxis_title='Value',
+    legend_title='Metric',
+    hovermode='x unified'
 )
 
-humidity_chart = alt.Chart(data).mark_line(color='green').encode(
-    x='timestamp:T',
-    y='humidity:Q',
-    tooltip=["timestamp", "humidity"]
-).properties(
-    title="Humidity in London Over Time"
-)
-
-final_chart = alt.vconcat(temp_chart, humidity_chart)
-
-os.makedirs("visuals", exist_ok=True)
-final_chart.save("visuals/weather_dashboard.html")
-
-print("✅ Dashboard saved to visuals/weather_dashboard.html")
+fig.write_html("visuals/weather_dashboard.html")
