@@ -1,102 +1,107 @@
-# 🌦 Weather ETL Dashboard Project
 
-This project is a lightweight end-to-end **ETL (Extract, Transform, Load)** pipeline that collects real-time weather data from the [OpenWeatherMap API](https://openweathermap.org/api), processes and cleans it, and generates interactive visualizations using Plotly. It runs on Python and is ideal for learning/practicing data engineering workflows.
+# 🌦️ Weather ETL & Dashboard Project
+
+A full end-to-end pipeline for collecting, transforming, and visualising live weather data using Python.
+
+## 📦 Project Overview
+
+This project builds a robust ETL pipeline to:
+- 📥 Fetch real-time weather data from the OpenWeatherMap API
+- 🧹 Transform and clean raw JSON into structured tabular format
+- 🗃️ Combine datasets into a single historical `.csv` file
+- 📊 Generate an interactive weather dashboard using Vega-Altair
 
 ---
 
-## 🧱 Project Structure
+## 📁 Directory Structure
 
 ```
 weather-pipeline/
 ├── data/
-│   ├── raw/               # Raw JSON API responses
-│   └── processed/         # Cleaned CSV files + combined dataset
+│   ├── raw/                # Raw JSON API responses
+│   └── processed/          # Cleaned CSV files, combined dataset
+├── notebooks/              # For ad-hoc testing and prototyping
 ├── scripts/
-│   ├── weather_fetcher.py     # Extracts data from API
-│   ├── weather_transform.py   # Transforms JSON to structured CSV
-│   ├── combine_csvs.py        # Merges CSVs and removes duplicates
-│   └── dashboard.py           # Generates Plotly HTML dashboard
+│   ├── weather_fetcher.py      # Pulls data from API
+│   ├── weather_transform.py    # Transforms raw JSON into clean CSV
+│   ├── combine_csvs.py         # Combines cleaned CSVs into one
+│   └── dashboard.py            # Generates multi-metric Altair dashboard
 ├── visuals/
-│   └── weather_dashboard.html # Output visualisation
-├── .gitignore
-├── requirements.txt
+│   └── weather_dashboard.html  # Interactive HTML dashboard
+├── .env                    # Contains API key (excluded via .gitignore)
+├── requirements.txt        # Python dependencies
 └── README.md
 ```
 
 ---
 
-## 🔁 Workflow Overview
+## 📊 Dashboard Features
 
-1. **Extract**  
-   `weather_fetcher.py` connects to the OpenWeather API and saves a JSON file of weather conditions for **London**.
+- ✅ Temperature trend over time  
+- ✅ Humidity trend  
+- ✅ Atmospheric pressure  
+- ✅ Wind speed & direction  
+- ✅ Cloud coverage  
+- ✅ Frequency of weather conditions  
+- ✅ Weather descriptions breakdown  
 
-2. **Transform**  
-   `weather_transform.py` reads the raw `.json`, extracts key metrics (`temperature`, `humidity`, `condition`, etc.), and saves it as a CSV.
-
-3. **Load**  
-   `combine_csvs.py` merges all new CSVs into a master file (`weather_data.csv`), sorted by timestamp and free of duplicates.
-
-4. **Visualize**  
-   `dashboard.py` creates an interactive Plotly graph for London’s weather trends and saves it as a standalone HTML dashboard.
+All charts are interactive, linked by timestamp, and saved as a standalone offline HTML dashboard.
 
 ---
 
-## 📊 Sample Metrics Tracked
+## ⚙️ Tech Stack
 
-- Timestamp (converted from Unix)
-- City
-- Temperature (°C)
-- Humidity (%)
-- Weather condition (e.g. "scattered clouds")
-
----
-
-## 🔧 Requirements
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-You also need a `.env` file in the root with your API key:
-
-```
-OPENWEATHER_API_KEY=your_api_key_here
-```
+- **Languages:** Python
+- **Data Wrangling:** pandas, os, datetime
+- **Visualisation:** Altair (Vega-Altair)
+- **Environment:** `.env` & `python-dotenv`
+- **Automation:** Modular script execution (can be scheduled)
 
 ---
 
-## 📅 Automation Tip
+## ▶️ How to Run
 
-You can use **Task Scheduler (Windows)** or **cron (Linux/Mac)** to schedule `weather_fetcher.py` to run every 10 minutes.
+1. **Install dependencies**
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. **Add your OpenWeatherMap API Key**
+   - Create a `.env` file in the root directory
+   ```
+   WEATHER_API_KEY=your_api_key_here
+   ```
+
+3. **Run scripts in order:**
+   ```
+   python scripts/weather_fetcher.py
+   python scripts/weather_transform.py
+   python scripts/combine_csvs.py
+   python scripts/dashboard.py
+   ```
+
+4. **Open your dashboard**
+   ```
+   ./visuals/weather_dashboard.html
+   ```
+
+---
+
+## 🚀 Coming Soon
+
+- [ ] City selection filters
+- [ ] Date range filtering
+- [ ] Streamlit / web-hosted version
 
 ---
 
-## ✅ Example Run Order
+## 🧠 Motivation
 
-```bash
-python scripts/weather_fetcher.py
-python scripts/weather_transform.py
-python scripts/combine_csvs.py
-python scripts/dashboard.py
-```
-
-Then open `visuals/weather_dashboard.html` in your browser.
+This project simulates the workflow of a Junior Data Engineer working on real-time data ingestion and dashboarding, ideal for portfolio use.
 
 ---
 
-## 📁 .gitignore
+## 📬 Contact
 
-Make sure your `.gitignore` includes:
-
-```
-.env
-__pycache__/
-*.pyc
-data/raw/
-*.ipynb_checkpoints
-.venv/
-```
-
----
+Built by Cameron Backler  
+[GitHub](https://github.com/cqmeronn) | [LinkedIn](https://linkedin.com/in/your-link)
