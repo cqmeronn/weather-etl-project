@@ -104,4 +104,4 @@ This project simulates the workflow of a Junior Data Engineer working on real-ti
 ## 📬 Contact
 
 Built by Cameron Backler  
-[GitHub](https://github.com/cqmeronn) | [LinkedIn](https://linkedin.com/in/your-link)
+[GitHub](https://github.com/cqmeronn) | [LinkedIn](https://www.linkedin.com/in/cameron-backler/)
