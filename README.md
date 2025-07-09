@@ -87,19 +87,6 @@ All charts are interactive, linked by timestamp, and saved as a standalone offli
 
 ---
 
-## 🚀 Coming Soon
-
-- [ ] City selection filters
-- [ ] Date range filtering
-- [ ] Streamlit / web-hosted version
-
----
-
-## 🧠 Motivation
-
-This project simulates the workflow of a Junior Data Engineer working on real-time data ingestion and dashboarding, ideal for portfolio use.
-
----
 
 ## 📬 Contact
 
