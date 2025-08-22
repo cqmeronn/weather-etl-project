@@ -1,19 +1,19 @@
 
-# 🌦️ Weather ETL & Dashboard Project
+# Weather ETL & Dashboard Project
 
 A full end-to-end pipeline for collecting, transforming, and visualising live weather data using Python.
 
-## 📦 Project Overview
+## Project Overview
 
 This project builds a robust ETL pipeline to:
-- 📥 Fetch real-time weather data from the OpenWeatherMap API
-- 🧹 Transform and clean raw JSON into structured tabular format
-- 🗃️ Combine datasets into a single historical `.csv` file
-- 📊 Generate an interactive weather dashboard using Vega-Altair
+- Fetch real-time weather data from the OpenWeatherMap API
+- Transform and clean raw JSON into structured tabular format
+- Combine datasets into a single historical `.csv` file
+- Generate an interactive weather dashboard using Vega-Altair
 
 ---
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```
 weather-pipeline/
@@ -35,21 +35,21 @@ weather-pipeline/
 
 ---
 
-## 📊 Dashboard Features
+## Dashboard Features
 
-- ✅ Temperature trend over time  
-- ✅ Humidity trend  
-- ✅ Atmospheric pressure  
-- ✅ Wind speed & direction  
-- ✅ Cloud coverage  
-- ✅ Frequency of weather conditions  
-- ✅ Weather descriptions breakdown  
+- Temperature trend over time  
+- Humidity trend  
+- Atmospheric pressure  
+- Wind speed & direction  
+- Cloud coverage  
+- Frequency of weather conditions  
+- Weather descriptions breakdown  
 
 All charts are interactive, linked by timestamp, and saved as a standalone offline HTML dashboard.
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Languages:** Python
 - **Data Wrangling:** pandas, os, datetime
@@ -59,7 +59,7 @@ All charts are interactive, linked by timestamp, and saved as a standalone offli
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 1. **Install dependencies**
    ```
@@ -88,7 +88,7 @@ All charts are interactive, linked by timestamp, and saved as a standalone offli
 ---
 
 
-## 📬 Contact
+## Contact
 
 Built by Cameron Backler  
 [GitHub](https://github.com/cqmeronn) | [LinkedIn](https://www.linkedin.com/in/cameron-backler/)
